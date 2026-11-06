@@ -6,15 +6,15 @@
 /*   By: jefferson <jefferson@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/01 19:58:01 by aganz             #+#    #+#             */
-/*   Updated: 2026/11/04 16:31:56 by jefferson        ###   ########.fr       */
+/*   Updated: 2026/11/06 11:55:06 by jefferson        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "../minilibx-linux/mlx.h"
-# include "../libft/libft.h"
+# include "mlx/mlx.h"
+# include "libft/libft.h"
 # include <errno.h>
 # include <fcntl.h>
 # include <math.h>
@@ -44,18 +44,18 @@ typedef enum e_textures
 {
 	NORTH,
 	SOUTH,
-	EAST,
 	WEST,
+	EAST,
 	TEX_COUNT
 }			t_textures;
 
-typedef struct	s_vector
+typedef struct s_vector
 {
 	double	x;
 	double	y;
 }				t_vector;
 
-typedef struct	s_img
+typedef struct s_img
 {
 	char	*data_address;
 	void	*img_ptr;
@@ -66,7 +66,7 @@ typedef struct	s_img
 	int		height;
 }				t_img;
 
-typedef struct	s_keys
+typedef struct s_keys
 {
 	int	w;
 	int	a;
@@ -74,10 +74,9 @@ typedef struct	s_keys
 	int	d;
 	int	left;
 	int	right;
-	int escape;
 }				t_keys;
 
-typedef struct	s_player
+typedef struct s_player
 {
 	t_vector		position;
 	t_vector		direction;
@@ -85,31 +84,31 @@ typedef struct	s_player
 	t_keys			keys;
 }				t_player;
 
-typedef struct	s_map
+typedef struct s_map
 {
 	char	**grid;
 	int		width;
 	int		height;
 }				t_map;
 
-typedef struct	s_scene
+typedef struct s_scene
 {
 	int			floor_color;
 	int			ceiling_color;
 	char		*texture_path[TEX_COUNT];
-	char		start_direction; 
+	char		start_direction;
 	t_vector	start_position;
 	t_map		map;
 }				t_scene;
 
-typedef struct	s_mlx
+typedef struct s_mlx
 {
 	void	*mlx_ptr;
 	void	*window;
 	t_img	frame_buffer;
 }				t_mlx;
 
-typedef struct	s_game
+typedef struct s_game
 {
 	t_img		textures[TEX_COUNT];
 	t_mlx		mlx;
@@ -117,8 +116,21 @@ typedef struct	s_game
 	t_scene		scene;
 }				t_game;
 
-typedef struct	s_minimap
+typedef struct s_minimap
 {
 }				t_minimap;
 
+// UTILS
+int		chartab_length(char **tab);
+void	free_char_tab(char **tab);
+int		skip_spaces(char *line);
+
+// VALIDATION
+int		check_path(char *filename);
+int		check_extension(char *filename);
+
+// PARSING
+int		parse_header(char **filecontent, t_scene *scene);
+char	**append_line(char **filecontent, char *line);
+char	**read_file(int fd);
 #endif
