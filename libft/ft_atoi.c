@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jstrasse <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: jefferson <jefferson@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 13:44:17 by jstrasse          #+#    #+#             */
-/*   Updated: 2025/10/13 16:29:48 by jstrasse         ###   ########.fr       */
+/*   Updated: 2026/11/08 16:55:28 by jefferson        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,11 @@ int	main(void)
 	int	result;
 	int	trueres;
 
-	test = "   	-999";
+	test = "    -987";
 	result = ft_atoi(test);
 	trueres = atoi(test);
 	printf("%d is ft_atoi,\n", result);
 	printf("%d is real atoi\n", trueres);
 	return (0);
-}*/
+}
+*/

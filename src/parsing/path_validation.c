@@ -6,9 +6,9 @@ int	check_extension(char *filename)
 
 	length = ft_strlen(filename);
 	if (length < 5 || ft_strncmp(filename + length - 4, ".cub", 4))
-		return (0);
+		return (format_error("Wrong filename extension"));
 	if (filename[length - 5] == '/')
-		return (0);
+		return (format_error("Wrong filename extension"));
 	return (1);
 }
 
@@ -21,8 +21,7 @@ int	check_path(char *filename)
 	{
 		close(fd);
 		errno = EISDIR;
-		perror(filename);
-		return (0);
+		return (system_error(filename));
 	}
 	return (1);
 }

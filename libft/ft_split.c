@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jstrasse <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: jefferson <jefferson@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 14:06:07 by jstrasse          #+#    #+#             */
-/*   Updated: 2025/10/02 17:03:10 by jstrasse         ###   ####lausanne.ch   */
+/*   Updated: 2026/11/08 16:55:39 by jefferson        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,14 +112,12 @@ char	**ft_split(const char *s, char c)
 int	main(void)
 {
 	char	*test;
-	char	c;
 	char	**result;
 	int		i;
 
 	i = 0;
-	test = "Hello World This Is Split";
-	c = 32;
-	result = ft_split(test, c);
+	test = "200,100,0,";
+	result = ft_split(test, ',');
 	while (result[i])
 	{
 		printf("%s\n", result[i]);

@@ -6,7 +6,7 @@
 /*   By: jefferson <jefferson@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/01 19:58:01 by aganz             #+#    #+#             */
-/*   Updated: 2026/11/06 11:55:06 by jefferson        ###   ########.fr       */
+/*   Updated: 2026/11/10 09:01:00 by jefferson        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,13 @@ typedef enum e_textures
 	EAST,
 	TEX_COUNT
 }			t_textures;
+
+typedef enum e_identifiers
+{
+	FLOOR = TEX_COUNT,
+	CEILING,
+	ID_COUNT
+}			t_identifiers;
 
 typedef struct s_vector
 {
@@ -116,21 +123,64 @@ typedef struct s_game
 	t_scene		scene;
 }				t_game;
 
-typedef struct s_minimap
-{
-}				t_minimap;
+// COLORS.C
+int		read_component(char *string, int *i, int *component);
+int		parse_color(char *value);
 
-// UTILS
-int		chartab_length(char **tab);
+// FREE.C
 void	free_char_tab(char **tab);
-int		skip_spaces(char *line);
+void	free_scene(t_scene *scene);
 
-// VALIDATION
-int		check_path(char *filename);
-int		check_extension(char *filename);
+//IDENTIFIERS_UTILS.C
+int		get_identifier(char *line);
+int		is_set(t_scene *scene, int id);
+int		all_found(t_scene *scene);
 
-// PARSING
-int		parse_header(char **filecontent, t_scene *scene);
+// INIT.C
+void	init_scene(t_scene *scene);
+
+// MAP_UTILS.C
+int		line_length(char *line);
+int		is_player_char(char c);
+int		is_walkable(char c);
+int		set_player_start(t_scene *scene, char c, int y, int x);
+int		has_void_neighbour(char **grid, int y, int x);
+
+// MAP_VALIDATION.C
+int		check_chars(t_map *map);
+int		check_closed(t_map *map);
+int		check_map_char(char c);
+int		find_player(t_scene *scene);
+int		validate_map(t_scene *scene);
+
+// PARSE_MAP.C
+int		get_map_size(char **filecontent, int start, t_map *map);
+char	*create_row(int width);
+int		build_map_grid(char **filecontent, int start, t_map *map);
+int		is_map_line(char *line);
+
+// PARSE_FILE.C
 char	**append_line(char **filecontent, char *line);
 char	**read_file(int fd);
+char	**load_file(char *path);
+int		parse_content(char **file, t_scene *scene);
+int		parse_file(char *path, t_scene *scene);
+
+// PARSE_IDENTIFIERS.C
+char	*extract_value(char *line, int id);
+int		store_value(t_scene *scene, int id, char *value);
+int		parse_line(char *filecontent_line, t_scene *scene);
+int		parse_identifiers(char **filecontent, t_scene *scene);
+
+// PATH_VALIDATION.C
+int		check_extension(char *filename);
+int		check_path(char *filename);
+
+//UTILS.C
+int		chartab_length(char **tab);
+int		skip_spaces(char *line);
+int		is_empty(char *line);
+int		format_error(char *msg);
+int		system_error(char *msg);
+
 #endif

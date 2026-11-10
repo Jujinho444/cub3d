@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jstrasse <jstrasse@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jefferson <jefferson@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 15:21:49 by jstrasse          #+#    #+#             */
-/*   Updated: 2026/09/09 12:07:17 by jstrasse         ###   ########.fr       */
+/*   Updated: 2026/11/09 16:36:03 by jefferson        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
-# include "../libft.h" 
+# include "../libft.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1000000
