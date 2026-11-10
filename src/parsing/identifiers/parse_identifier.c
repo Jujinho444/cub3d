@@ -65,8 +65,8 @@ int	parse_line(char *filecontent_line, t_scene *scene)
 }
 
 /* This function returns 0 on failure 
-because 0 cannot be a valid index for a valid header
-It should have 6 lines minimum */
+and the index line of the map on success.
+It should have 6 lines minimum, one for each identifier*/
 int	parse_identifiers(char **filecontent, t_scene *scene)
 {
 	int	i;

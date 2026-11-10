@@ -5,9 +5,11 @@ CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror -MMD -MP 
 
 SRCS		=	src/main.c src/free.c src/init.c src/utils.c \
-				src/map/map_utils.c src/map/map_validation.c src/map/parse_map.c \
-				src/parsing/colors.c src/parsing/identifiers_utils.c src/parsing/parse_file.c \
-				src/parsing/parse_identifier.c src/parsing/path_validation.c
+				src/parsing/parse_file.c src/parsing/path_validation.c \
+				src/parsing/map/map_utils.c src/parsing/map/map_validation.c \
+				src/parsing/map/parse_map.c src/parsing/identifiers/colors.c  \
+				src/parsing/identifiers/identifiers_utils.c \
+				src/parsing/identifiers/parse_identifier.c
 
 OBJS_DIR	=	obj/
 

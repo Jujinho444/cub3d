@@ -74,14 +74,14 @@ char	**load_file(char *path)
 
 int	parse_content(char **file, t_scene *scene)
 {
-	int	map_indice;
+	int	map_index;
 
-	map_indice = parse_identifiers(file, scene);
-	if (!map_indice)
+	map_index = parse_identifiers(file, scene);
+	if (!map_index)
 		return (0);
-	if (!get_map_size(file, map_indice, &scene->map))
+	if (!get_map_size(file, map_index, &scene->map))
 		return (0);
-	if (!build_map_grid(file, map_indice, &scene->map))
+	if (!build_map_grid(file, map_index, &scene->map))
 		return (0);
 	if (!validate_map(scene))
 		return (0);
