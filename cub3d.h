@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefferson <jefferson@student.42.fr>        +#+  +:+       +#+        */
+/*   By: aganz <aganz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/01 19:58:01 by aganz             #+#    #+#             */
-/*   Updated: 2026/11/04 16:31:56 by jefferson        ###   ########.fr       */
+/*   Updated: 2026/11/11 13:59:41 by aganz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ typedef struct	s_scene
 	int			floor_color;
 	int			ceiling_color;
 	char		*texture_path[TEX_COUNT];
-	char		start_direction; 
+	char		start_direction;
 	t_vector	start_position;
 	t_map		map;
 }				t_scene;
