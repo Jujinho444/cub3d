@@ -1,5 +1,5 @@
 CC      := gcc
-CFLAGS  := -Werror -Wall -Wextra
+CFLAGS  := -Werror -Wall -Wextra -MMD -MP
 NAME    := libft.a
 
 # ─── libft ────────────────────────────────────────────────────────────────────
@@ -34,12 +34,17 @@ PRINTF_SRCS := $(PRINTF_DIR)/ft_printf.c \
                $(PRINTF_DIR)/ft_print_unsigned.c
 
 # ─── objects ──────────────────────────────────────────────────────────────────
-OBJECTS        := $(SRCS:.c=.o)
-BONUS_OBJECTS  := $(BONUS:.c=.o)
-GNL_OBJECTS    := $(GNL_SRCS:.c=.o)
-PRINTF_OBJECTS := $(PRINTF_SRCS:.c=.o)
+OBJS_DIR		:=	obj/
+OBJECTS        := $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
+BONUS_OBJECTS  := $(addprefix $(OBJS_DIR), $(BONUS:.c=.o))
+GNL_OBJECTS    := $(addprefix $(OBJS_DIR), $(GNL_SRCS:.c=.o))
+PRINTF_OBJECTS := $(addprefix $(OBJS_DIR), $(PRINTF_SRCS:.c=.o))
 
 ALL_OBJECTS    := $(OBJECTS) $(BONUS_OBJECTS) $(GNL_OBJECTS) $(PRINTF_OBJECTS)
+
+DEPS	:=	$(ALL_OBJECTS:.o=.d)
+
+INCLUDES	=	-I. -I$(GNL_DIR) -I$(PRINTF_DIR)
 
 .PHONY: all clean fclean re
 
@@ -48,22 +53,16 @@ all: $(NAME)
 $(NAME): $(ALL_OBJECTS)
 	ar -rcs $(NAME) $(ALL_OBJECTS)
 
-$(OBJECTS): %.o: %.c
-	$(CC) $(CFLAGS) -I. -c $< -o $@
-	
-$(BONUS_OBJECTS): %.o: %.c
-	$(CC) $(CFLAGS) -I. -c $< -o $@
-
-$(GNL_DIR)/%.o: $(GNL_DIR)/%.c
-	$(CC) $(CFLAGS) -I$(GNL_DIR) -c $< -o $@
-
-$(PRINTF_DIR)/%.o: $(PRINTF_DIR)/%.c
-	$(CC) $(CFLAGS) -I$(PRINTF_DIR) -c $< -o $@
+$(OBJS_DIR)%.o: %.c
+	mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	rm -f $(ALL_OBJECTS)
+	rm -rf $(OBJS_DIR)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+-include $(DEPS)
