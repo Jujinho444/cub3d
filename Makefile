@@ -6,7 +6,7 @@
 #    By: aganz <aganz@student.42lausanne.ch>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/11/16 22:24:18 by aganz             #+#    #+#              #
-#    Updated: 2026/11/16 22:47:46 by aganz            ###   ########.fr        #
+#    Updated: 2026/11/18 15:57:33 by aganz            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,13 @@ CC		=	cc
 
 CFLAGS	=	-Wall -Wextra -Werror -MMD -MP
 
-SRCS	=	src/main.c src/free.c src/init.c src/utils.c \
+SRCS	=	src/main.c src/free.c src/init.c src/utils.c src/cleanup.c \
 			src/parsing/parse_file.c src/parsing/path_validation.c \
 			src/parsing/map/map_utils.c src/parsing/map/map_validation.c \
 			src/parsing/map/parse_map.c src/parsing/identifiers/colors.c  \
 			src/parsing/identifiers/identifiers_utils.c \
-			src/parsing/identifiers/parse_identifier.c
+			src/parsing/identifiers/parse_identifier.c \
+			src/render/mlx_init.c src/render/draw.c
 
 OBJS_DIR	=	obj/
 

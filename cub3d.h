@@ -6,7 +6,7 @@
 /*   By: aganz <aganz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/01 19:58:01 by aganz             #+#    #+#             */
-/*   Updated: 2026/11/16 23:06:46 by aganz            ###   ########.fr       */
+/*   Updated: 2026/11/18 23:38:03 by aganz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,9 +128,16 @@ typedef struct	s_minimap
 {
 }				t_minimap;
 
+//CLEANUP.C
+int	cleanup_game(t_game *game);
+
 // COLORS.C
 int		read_component(char *string, int *i, int *component);
 int		parse_color(char *value);
+
+//DRAW.C
+void	put_pixel(t_img *img, int x, int y, int color);
+void	draw_background(t_game *game);
 
 // FREE.C
 void	free_char_tab(char **tab);
@@ -143,6 +150,11 @@ int		all_found(t_scene *scene);
 
 // INIT.C
 void	init_scene(t_scene *scene);
+void	init_game(t_game *game);
+
+//INIT_MLX.C
+int		init_mlx(t_game *game);
+int		init_frame(t_game *game);
 
 // MAP_UTILS.C
 int		line_length(char *line);

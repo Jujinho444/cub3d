@@ -6,7 +6,7 @@
 /*   By: aganz <aganz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/15 15:30:11 by aganz             #+#    #+#             */
-/*   Updated: 2026/11/15 16:46:46 by aganz            ###   ########.fr       */
+/*   Updated: 2026/11/18 23:37:17 by aganz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,21 @@ int	main(int argc, char **argv)
 		format_error("Wrong number of arguments in program");
 		return (1);
 	}
-	init_scene(&game.scene);
+	init_game(&game);
 	if (!parse_file(argv[1], &game.scene))
+	{
+		cleanup_game(&game);
 		return (1);
-	free_scene(&game.scene);
+	}
+	if (!init_mlx(&game))
+	{
+		cleanup_game(&game);
+		return (1);
+	}
+	draw_background(&game);
+	mlx_put_image_to_window(game.mlx.mlx_ptr, game.mlx.window,
+			game.mlx.frame_buffer.img_ptr, 0, 0);
+	mlx_loop(game.mlx.mlx_ptr);
+	cleanup_game(&game);
 	return (0);
 }
