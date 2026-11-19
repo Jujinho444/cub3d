@@ -6,7 +6,7 @@
 /*   By: aganz <aganz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/01 19:58:01 by aganz             #+#    #+#             */
-/*   Updated: 2026/11/18 23:38:03 by aganz            ###   ########.fr       */
+/*   Updated: 2026/11/19 19:35:25 by aganz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,9 +139,15 @@ int		parse_color(char *value);
 void	put_pixel(t_img *img, int x, int y, int color);
 void	draw_background(t_game *game);
 
+//EVENTS.C
+int	handle_keypress(int keycode, t_game *game);
+
 // FREE.C
 void	free_char_tab(char **tab);
 void	free_scene(t_scene *scene);
+
+//GAME_EXIT.C
+int		close_game(t_game *game);
 
 //IDENTIFIERS_UTILS.C
 int		get_identifier(char *line);

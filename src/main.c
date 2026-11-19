@@ -6,7 +6,7 @@
 /*   By: aganz <aganz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/15 15:30:11 by aganz             #+#    #+#             */
-/*   Updated: 2026/11/18 23:37:17 by aganz            ###   ########.fr       */
+/*   Updated: 2026/11/19 19:36:28 by aganz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	main(int argc, char **argv)
 	draw_background(&game);
 	mlx_put_image_to_window(game.mlx.mlx_ptr, game.mlx.window,
 			game.mlx.frame_buffer.img_ptr, 0, 0);
+	mlx_hook(game.mlx.window, 17, 0, close_game, &game);
+	mlx_hook(game.mlx.window, 2, 1L << 0, handle_keypress, &game);
 	mlx_loop(game.mlx.mlx_ptr);
 	cleanup_game(&game);
 	return (0);
