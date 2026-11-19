@@ -1,0 +1,48 @@
+Reste à faire :
+
+se mettre d'accord sur les conventions de faces NO-SO-EA-WE.  |__|
+Un rayon qui va vers le Nord affiche la texture NORTH ? 
+ou SOUTH parce que c'est la partie sud du mur qu'il touche ?
+
+
+Nouveau struct pour les rayons avec comme variables :
+- la distance jusqu'au mur.
+- le rayon touche un mur vertical ou horizontal 
+- De quel coté le rayon touche le mur (NO-SO pour horizontale EA-WE pour vertical) 
+- l'endroit exact où le rayon touche le mur
+
+
+Raycasting :
+- Calculer la distance de chaque rayon a partir de la direction du joueur et de son plane.
+- Avancer case par case jusqu'au mur.
+- la distance perpendiculaire (le plus petit rayon est celui du centre).
+- le point d'impact sur le mur
+
+DDA (Digital Difference Analyzer) : https://www.geeksforgeeks.org/computer-graphics/dda-line-generation-algorithm-computer-graphics/
+The steps involved in DDA line generation algorithm are:
+
+1 Input the two endpoints of the line segment, (x1,y1) and (x2,y2).
+2 Calculate the difference between the x-coordinates and y-coordinates of the endpoints as dx and dy respectively.
+3 Calculate the slope of the line as m = dy/dx.
+4 Set the initial point of the line as (x1,y1).
+5 Loop through the x-coordinates of the line, incrementing by one each time, and calculate the corresponding y-coordinate using the equation y = y1 + m(x - x1).
+6 Plot the pixel at the calculated (x,y) coordinate.
+- Repeat steps 5 and 6 until the endpoint (x2,y2) is reached.
+
+
+Fenêtre, Controles et cycle de vie :
+- init de la mlx
+- init de t_player depuis t_scene
+- Touches et déplacements, WASD - fleches gauche + droite - Echap + croix de la fenêtre (SO_LONG)
+- la boucle qui à chaque frame, lance les rayons par colonne, les dessine et affiche le frame_buffer.
+- Sortie propre : libérer dans le bonne ordre
+
+Images et dessin :
+- Charger les textures avec gestion d'erreur
+- lire un pixel dans une texture.
+- écrire un pixel dans un t_img.
+- couleurs des plafonds et sol.
+- Dessiner une colonne à partir du résultat d'un rayon
+- libérer les textures
+
+

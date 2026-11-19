@@ -6,7 +6,7 @@
 /*   By: jefferson <jefferson@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/01 19:58:01 by aganz             #+#    #+#             */
-/*   Updated: 2026/11/10 09:01:00 by jefferson        ###   ########.fr       */
+/*   Updated: 2026/11/19 20:40:35 by jefferson        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "mlx/mlx.h"
 # include "libft/libft.h"
+# include <X11/X.h>
 # include <errno.h>
 # include <fcntl.h>
 # include <math.h>
@@ -28,10 +29,12 @@
 # define WIN_HEIGHT 720
 
 //define keys
-# define KEY_UP		65362
+# define KEY_W		119
+# define KEY_A		97
+# define KEY_S		115
+# define KEY_D		100
 # define KEY_LEFT	65361
 # define KEY_RIGHT	65363
-# define KEY_DOWN	65364
 # define KEY_ESC	65307
 
 //define speed
@@ -62,6 +65,11 @@ typedef struct s_vector
 	double	y;
 }				t_vector;
 
+typedef struct s_vector_int
+{
+	int	x;
+	int	y;
+}				t_vector_int;
 typedef struct s_img
 {
 	char	*data_address;
@@ -72,6 +80,19 @@ typedef struct s_img
 	int		width;
 	int		height;
 }				t_img;
+
+typedef struct s_ray
+{
+	double			distance_to_wall;
+	t_vector_int	current_position;
+	t_textures		wall;
+	double			point_of_impact;
+	t_vector		delta_dist;
+	t_vector		side_dist;
+	t_vector_int	step;
+	t_vector		ray_dir;
+	int				last_axis;
+}				t_ray;
 
 typedef struct s_keys
 {

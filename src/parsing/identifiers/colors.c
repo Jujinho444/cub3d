@@ -40,5 +40,5 @@ int	parse_color(char *value)
 		i++;
 		j++;
 	}
-	return (rgb[0] * 65536 + rgb[1] * 256 + rgb[2]);
+	return (rgb[0] << 16 | rgb[1] << 8 | rgb[2]);
 }
