@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   colors.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jstrasse <jstrasse@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/20 11:23:45 by jstrasse          #+#    #+#             */
+/*   Updated: 2026/11/20 11:23:59 by jstrasse         ###   ########.ch       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 int	read_component(char *string, int *i, int *component)
@@ -11,11 +23,11 @@ int	read_component(char *string, int *i, int *component)
 	{
 		(*component) = (*component) * 10 + (string[*i] - '0');
 		if ((*component) > 255)
-			return (format_error("Color Value out of range"));
+			return (format_error("Color value out of range"));
 		(*i)++;
 	}
 	if (start == (*i))
-		return (format_error("Missing Color Value"));
+		return (format_error("Missing color value"));
 	(*i) += skip_spaces(&string[*i]);
 	return (1);
 }
@@ -34,7 +46,7 @@ int	parse_color(char *value)
 			return (COLOR_UNSET);
 		if ((value[i] != ',' && j != 2) || (value[i] != '\0' && j == 2))
 		{
-			format_error("Incorrect Color format");
+			format_error("Incorrect color format");
 			return (COLOR_UNSET);
 		}
 		i++;

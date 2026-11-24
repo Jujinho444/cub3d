@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aganz <aganz@student.42lausanne.ch>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/16 21:26:12 by aganz             #+#    #+#             */
+/*   Updated: 2026/11/16 21:41:49 by aganz            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 int	get_map_size(char **filecontent, int start, t_map *map)
@@ -10,7 +22,7 @@ int	get_map_size(char **filecontent, int start, t_map *map)
 	{
 		if (is_empty(filecontent[start])
 			&& (filecontent[start + 1] && !is_empty(filecontent[start + 1])))
-			return (format_error("Incorrect Map, empty line inside map"));
+			return (format_error("Incorrect map, empty line inside map"));
 		width = line_length(filecontent[start]);
 		if (width > map->width)
 			map->width = width;

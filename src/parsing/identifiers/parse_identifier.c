@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_identifier.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jstrasse <jstrasse@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/20 11:52:58 by jstrasse          #+#    #+#             */
+/*   Updated: 2026/11/20 11:52:58 by jstrasse         ###   ########.ch       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 char	*extract_value(char *line, int id)
@@ -19,7 +31,7 @@ char	*extract_value(char *line, int id)
 	if (result[0] == '\0')
 	{
 		free(result);
-		format_error("Identifier has empty value");
+		format_error("identifier has empty value");
 		return (NULL);
 	}
 	return (result);
@@ -64,9 +76,6 @@ int	parse_line(char *filecontent_line, t_scene *scene)
 	return (store_value(scene, id, value));
 }
 
-/* This function returns 0 on failure 
-and the index line of the map on success.
-It should have 6 lines minimum, one for each identifier*/
 int	parse_identifiers(char **filecontent, t_scene *scene)
 {
 	int	i;
@@ -77,7 +86,11 @@ int	parse_identifiers(char **filecontent, t_scene *scene)
 		if (!is_empty(filecontent[i]))
 		{
 			if (all_found(scene))
+			{
+				if (get_identifier(filecontent[i]) != -1)
+					return (format_error("identifier is duplicated"));
 				return (i);
+			}
 			if (is_map_line(filecontent[i]))
 				return (format_error("missing element in header"));
 			if (!parse_line(filecontent[i], scene))
