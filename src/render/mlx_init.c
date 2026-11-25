@@ -6,7 +6,7 @@
 /*   By: aganz <aganz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/18 10:38:30 by aganz             #+#    #+#             */
-/*   Updated: 2026/11/18 15:26:56 by aganz            ###   ########.fr       */
+/*   Updated: 2026/11/25 13:42:41 by aganz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ int	init_mlx(t_game *game)
 						"cub3d");
 	if (!game->mlx.window)
 		return (format_error("Failed to open window"));
-	return (init_frame(game));
+	if (!init_frame(game))
+		return (0);
+	return (init_textures(game));
 }
 
 int	init_frame(t_game *game)

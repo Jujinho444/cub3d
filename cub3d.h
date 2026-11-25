@@ -6,7 +6,7 @@
 /*   By: aganz <aganz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/01 19:58:01 by aganz             #+#    #+#             */
-/*   Updated: 2026/11/19 19:35:25 by aganz            ###   ########.fr       */
+/*   Updated: 2026/11/25 13:38:35 by aganz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <X11/X.h>
 
 //define windows
 # define WIN_WIDTH 960
@@ -140,7 +141,7 @@ void	put_pixel(t_img *img, int x, int y, int color);
 void	draw_background(t_game *game);
 
 //EVENTS.C
-int	handle_keypress(int keycode, t_game *game);
+int		handle_keypress(int keycode, t_game *game);
 
 // FREE.C
 void	free_char_tab(char **tab);
@@ -158,10 +159,6 @@ int		all_found(t_scene *scene);
 void	init_scene(t_scene *scene);
 void	init_game(t_game *game);
 
-//INIT_MLX.C
-int		init_mlx(t_game *game);
-int		init_frame(t_game *game);
-
 // MAP_UTILS.C
 int		line_length(char *line);
 int		is_player_char(char c);
@@ -175,6 +172,10 @@ int		check_closed(t_map *map);
 int		check_map_char(char c);
 int		find_player(t_scene *scene);
 int		validate_map(t_scene *scene);
+
+//MLX_INIT.C
+int		init_mlx(t_game *game);
+int		init_frame(t_game *game);
 
 // PARSE_MAP.C
 int		get_map_size(char **filecontent, int start, t_map *map);
@@ -198,6 +199,10 @@ int		parse_identifiers(char **filecontent, t_scene *scene);
 // PATH_VALIDATION.C
 int		check_extension(char *filename);
 int		check_path(char *filename);
+
+// TEXTURES_INIT.C
+int		load_texture(void *mlx_ptr, char *path, t_img *img);
+int		init_textures(t_game *game);
 
 //UTILS.C
 int		chartab_length(char **tab);

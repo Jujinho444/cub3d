@@ -6,7 +6,7 @@
 #    By: aganz <aganz@student.42lausanne.ch>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/11/16 22:24:18 by aganz             #+#    #+#              #
-#    Updated: 2026/11/19 19:35:42 by aganz            ###   ########.fr        #
+#    Updated: 2026/11/25 14:00:47 by aganz            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS	=	src/main.c src/free.c src/init.c src/utils.c src/cleanup.c \
 			src/parsing/map/parse_map.c src/parsing/identifiers/colors.c  \
 			src/parsing/identifiers/identifiers_utils.c \
 			src/parsing/identifiers/parse_identifier.c \
-			src/render/mlx_init.c src/render/draw.c \
+			src/render/mlx_init.c src/render/draw.c src/render/texture_init.c\
 			src/game_exit.c src/events.c \
 
 OBJS_DIR	=	obj/
@@ -40,6 +40,8 @@ MLX_DIR	=	mlx/
 MLX		=	$(MLX_DIR)/libmlx.a
 
 INCLUDES	=	-I. -I$(LIBFT_DIR)
+
+MAP = maps/valid/v01_basic.cub
 
 all: $(NAME)
 
@@ -67,8 +69,11 @@ fclean: clean
 
 re: fclean all
 
+valgrind: $(NAME)
+	valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes ./$(NAME) $(MAP)
+
 bonus: $(NAME)
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re bonus valgrind
 
 -include $(DEPS)
