@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jstrasse <jstrasse@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: jstrasse <jstrasse@student.42lausanne.ch>    +#+  +:+       +#+      */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/24 01:26:08 by jstrasse          #+#    #+#             */
-/*   Updated: 2026/11/24 01:26:08 by jstrasse         ###   ########.ch       */
+/*   Created: 2026/11/26 23:00:12 by jstrasse          #+#    #+#             */
+/*   Updated: 2026/11/26 23:00:20 by jstrasse         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,11 @@ void	draw_fov(t_game *game)
 	}
 }
 
-void	draw_2Dmap(t_game *game)
+void	draw_2d_map(t_game *game)
 {
 	char	**grid;
 	t_img	*img;
+	t_point	pixel;
 	int		x;
 	int		y;
 
@@ -57,7 +58,9 @@ void	draw_2Dmap(t_game *game)
 		x = 0;
 		while (grid[y][x])
 		{
-			draw_square(img, x * TILE, y * TILE, TILE, tile_color(grid[y][x]));
+			pixel.x = x * TILE;
+			pixel.y = y * TILE;
+			draw_square(img, pixel, TILE, tile_color(grid[y][x]));
 			x++;
 		}
 		y++;
@@ -66,19 +69,18 @@ void	draw_2Dmap(t_game *game)
 
 void	draw_minimap_player(t_game *game)
 {
-	double	px;
-	double	py;
+	t_point	pixel;
 	t_img	*img;
 
 	img = &game->mlx.frame_buffer;
-	px = (game->player.position.x * TILE) - (MINIMAP_PLAYER_SIZE / 2);
-	py = (game->player.position.y * TILE) - (MINIMAP_PLAYER_SIZE / 2);
-	draw_square(img, (int)px, (int)py, MINIMAP_PLAYER_SIZE, MINIMAP_PLAYER);
+	pixel.x = (game->player.position.x * TILE) - (MINIMAP_PLAYER_SIZE / 2);
+	pixel.y = (game->player.position.y * TILE) - (MINIMAP_PLAYER_SIZE / 2);
+	draw_square(img, pixel, MINIMAP_PLAYER_SIZE, MINIMAP_PLAYER);
 }
 
 void	draw_minimap(t_game *game)
 {
-	draw_2Dmap(game);
+	draw_2d_map(game);
 	draw_fov(game);
 	draw_minimap_player(game);
 }

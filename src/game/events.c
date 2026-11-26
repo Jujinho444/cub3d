@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jstrasse <jstrasse@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: jstrasse <jstrasse@student.42lausanne.ch>    +#+  +:+       +#+      */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/20 13:14:49 by jstrasse          #+#    #+#             */
-/*   Updated: 2026/11/20 13:16:33 by jstrasse         ###   ########.ch       */
+/*   Created: 2026/11/26 10:53:48 by jstrasse          #+#    #+#             */
+/*   Updated: 2026/11/26 10:54:11 by jstrasse         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	handle_keypress(int keycode, t_game *game)
 		close_game(game);
 	else
 		set_keys(&game->keys, keycode, 1);
-	
 	return (0);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jstrasse <jstrasse@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: jstrasse <jstrasse@student.42lausanne.ch>    +#+  +:+       +#+      */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/24 01:23:52 by jstrasse          #+#    #+#             */
-/*   Updated: 2026/11/24 01:24:04 by jstrasse         ###   ########.ch       */
+/*   Created: 2026/11/26 23:00:05 by jstrasse          #+#    #+#             */
+/*   Updated: 2026/11/26 23:00:05 by jstrasse         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	put_pixel(t_img *img, int x, int y, int color)
 	if (y < 0 || y >= img->height)
 		return ;
 	pixel_address = img->data_address + y * img->line_length
-						+ x * (img->bits_per_pixel / 8);
+		+ x * (img->bits_per_pixel / 8);
 	*(unsigned int *)pixel_address = color;
 }
 
@@ -48,7 +48,7 @@ void	draw_background(t_game *game)
 	}
 }
 
-void	draw_square(t_img *img, int px, int py, int size, int color)
+void	draw_square(t_img *img, t_point pixel, int size, int color)
 {
 	int	x;
 	int	y;
@@ -59,7 +59,7 @@ void	draw_square(t_img *img, int px, int py, int size, int color)
 		x = 0;
 		while (x < size)
 		{
-			put_pixel(img, px + x, py + y, color);
+			put_pixel(img, pixel.x + x, pixel.y + y, color);
 			x++;
 		}
 		y++;

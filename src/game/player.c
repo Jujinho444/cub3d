@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jstrasse <jstrasse@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: jstrasse <jstrasse@student.42lausanne.ch>    +#+  +:+       +#+      */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/24 01:02:55 by jstrasse          #+#    #+#             */
-/*   Updated: 2026/11/24 01:15:23 by jstrasse         ###   ########.ch       */
+/*   Created: 2026/11/26 10:53:34 by jstrasse          #+#    #+#             */
+/*   Updated: 2026/11/26 10:53:34 by jstrasse         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 

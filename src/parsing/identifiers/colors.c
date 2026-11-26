@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jstrasse <jstrasse@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: jstrasse <jstrasse@student.42lausanne.ch>    +#+  +:+       +#       */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/20 11:23:45 by jstrasse          #+#    #+#             */
-/*   Updated: 2026/11/20 11:23:59 by jstrasse         ###   ########.ch       */
+/*   Created: 2026/11/26 11:14:28 by jstrasse          #+#    #+#             */
+/*   Updated: 2026/11/26 11:14:28 by jstrasse         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 

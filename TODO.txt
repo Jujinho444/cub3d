@@ -46,3 +46,12 @@ Images et dessin :
 - libérer les textures
 
 
+
+
+AVANT :
+MOVESPEED 0.0125 cases par frame
+maintenant :
+MOVESPEED 3.0 cases par secondes
+step(MOVESPEED * delta_time) case par frame
+
+direction * distance = deplacement;

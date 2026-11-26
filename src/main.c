@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jstrasse <jstrasse@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: jstrasse <jstrasse@student.42lausanne.ch>    +#+  +:+       +#+      */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/20 16:19:30 by jstrasse          #+#    #+#             */
-/*   Updated: 2026/11/20 16:19:45 by jstrasse         ###   ########.ch       */
+/*   Created: 2026/11/26 11:18:28 by jstrasse          #+#    #+#             */
+/*   Updated: 2026/11/26 11:18:28 by jstrasse         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 

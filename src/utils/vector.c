@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jstrasse <jstrasse@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: jstrasse <jstrasse@student.42lausanne.ch>    +#+  +:+       +#+      */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/24 00:19:45 by jstrasse          #+#    #+#             */
-/*   Updated: 2026/11/24 00:44:21 by jstrasse         ###   ########.ch       */
+/*   Created: 2026/11/26 11:18:12 by jstrasse          #+#    #+#             */
+/*   Updated: 2026/11/26 11:18:12 by jstrasse         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 

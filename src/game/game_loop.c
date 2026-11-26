@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jstrasse <jstrasse@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: jstrasse <jstrasse@student.42lausanne.ch>    +#+  +:+       +#+      */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/23 23:08:31 by jstrasse          #+#    #+#             */
-/*   Updated: 2026/11/23 23:08:31 by jstrasse         ###   ########.ch       */
+/*   Created: 2026/11/26 10:54:20 by jstrasse          #+#    #+#             */
+/*   Updated: 2026/11/26 10:54:29 by jstrasse         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ int	game_loop(t_game *game)
 	draw_background(game);
 	draw_minimap(game);
 	mlx_put_image_to_window(game->mlx.mlx_ptr, game->mlx.window,
-			game->mlx.frame_buffer.img_ptr, 0, 0);
+		game->mlx.frame_buffer.img_ptr, 0, 0);
 	return (0);
 }

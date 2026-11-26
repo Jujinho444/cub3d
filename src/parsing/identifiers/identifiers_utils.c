@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   identifiers_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jstrasse <jstrasse@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: jstrasse <jstrasse@student.42lausanne.ch>    +#+  +:+       +#+      */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/23 21:57:17 by jstrasse          #+#    #+#             */
-/*   Updated: 2026/11/23 21:59:28 by jstrasse         ###   ########.ch       */
+/*   Created: 2026/11/26 11:14:50 by jstrasse          #+#    #+#             */
+/*   Updated: 2026/11/26 11:14:50 by jstrasse         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 

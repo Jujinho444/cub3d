@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_identifier.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jstrasse <jstrasse@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: jstrasse <jstrasse@student.42lausanne.ch>    +#+  +:+       +#+      */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/20 11:52:58 by jstrasse          #+#    #+#             */
-/*   Updated: 2026/11/20 11:52:58 by jstrasse         ###   ########.ch       */
+/*   Created: 2026/11/26 11:14:41 by jstrasse          #+#    #+#             */
+/*   Updated: 2026/11/26 11:14:41 by jstrasse         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
