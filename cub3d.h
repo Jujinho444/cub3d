@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jstrasse <jstrasse@student.42lausanne.ch>    +#+  +:+       +#+      */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/26 23:00:40 by jstrasse          #+#    #+#             */
-/*   Updated: 2026/11/26 23:00:40 by jstrasse         ###   ########.ch       */
+/*   Created: 2026/11/27 23:32:30 by jstrasse          #+#    #+#             */
+/*   Updated: 2026/11/27 23:32:43 by jstrasse         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 # include <sys/time.h>
 
 //define windows
-# define WIN_WIDTH 1900
-# define WIN_HEIGHT 1090
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1080
 
 //define keys
 # define KEY_W		119
@@ -43,9 +43,12 @@
 # define MOVESPEED 3.0
 # define ROTSPEED 2.0
 # define PLANE 0.66
+# define AXIS_X 0
+# define AXIS_Y 1
 # define COLOR_UNSET -1
 # define WALL_MARGIN 0.2
-# define MAX_DELTATIME 0.05 // Delta time is time passed since last frame
+# define MIN_DIST_TO_WALL 0.0001
+# define MAX_DELTATIME 0.05 // Delta time = seconds passed since last frame
 # define TILE 24
 # define MINIMAP_PLAYER_SIZE 6 // TILE divided by 4
 # define MINIMAP_WALL 0x000000
@@ -97,15 +100,25 @@ typedef struct s_img
 typedef struct s_ray
 {
 	double			distance_to_wall;
-	t_point			current_position;
-	t_textures		wall;
+	t_point			current_cell;
+	t_textures		wall_type;
 	double			point_of_impact;
 	t_vector		delta_dist;
 	t_vector		side_dist;
 	t_point			step;
-	t_vector		ray_dir;
+	t_vector		direction;
 	int				last_axis;
 }				t_ray;
+
+typedef struct s_column
+{
+	int			draw_start;
+	int			draw_end;
+	t_img		*texture;
+	int			tex_x;
+	double		tex_position;
+	double		tex_step;
+}				t_column;
 
 typedef struct s_keys
 {
@@ -166,6 +179,9 @@ void		init_player(t_game *game);
 /*mlx_init.c*/
 int			init_mlx(t_game *game);
 int			init_frame(t_game *game);
+/*texture_init.c*/
+int			load_texture(void *mlx_ptr, char *path, t_img *img);
+int			init_textures(t_game *game);
 
 // PARSING
 /*parse_file.c*/
@@ -224,11 +240,21 @@ void		put_pixel(t_img *img, int x, int y, int color);
 void		draw_background(t_game *game);
 void		draw_square(t_img *img, t_point pixel, int size, int color);
 void		draw_ray(t_game *game, t_vector direction, t_vector position);
+void		draw_column(t_game *game, t_column *col, int x);
 /*minimap.c*/
 void		draw_minimap(t_game *game);
 void		draw_fov(t_game *game);
 void		draw_minimap_player(t_game *game);
 void		draw_2d_map(t_game *game);
+/*raycast.c*/
+void		init_ray(t_ray *ray, t_player *player, int screen_x);
+void		dda_loop(t_ray *ray, char **map_grid);
+void		set_wall_hit(t_ray *ray, t_player *player);
+t_ray		cast_ray(t_game *game, int screen_x);
+/*render.c*/
+void		render_frame(t_game *game);
+int			get_texel(t_img *texture, int x, int y);
+void		init_column(t_column *col, t_ray *ray, t_game *game);
 
 // EXIT
 /*cleanup.c*/
@@ -254,5 +280,10 @@ t_vector	vec_perpendicular_right(t_vector vector);
 t_vector	rotate_vector(t_vector vector, double angle);
 /*time.c*/
 double		get_time_seconds(void);
+/*raycast_utils.c*/
+t_vector	get_ray_dir(t_player *player, int screen_x);
+t_vector	get_delta_dist(t_vector ray_dir);
+t_point		get_ray_cell(t_player *player);
+void		init_step_and_side(t_ray *ray, t_vector position);
 
 #endif

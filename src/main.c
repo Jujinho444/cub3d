@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jstrasse <jstrasse@student.42lausanne.ch>    +#+  +:+       +#+      */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/26 11:18:28 by jstrasse          #+#    #+#             */
-/*   Updated: 2026/11/26 11:18:28 by jstrasse         ###   ########.ch       */
+/*   Created: 2026/11/27 23:33:09 by jstrasse          #+#    #+#             */
+/*   Updated: 2026/11/27 23:33:14 by jstrasse         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	setup_hooks(&game);
-	game.last_frame = get_time_seconds();
 	mlx_loop_hook(game.mlx.mlx_ptr, game_loop, &game);
+	game.last_frame = get_time_seconds();
 	mlx_loop(game.mlx.mlx_ptr);
 	cleanup_game(&game);
 	return (0);

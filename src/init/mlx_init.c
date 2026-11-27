@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jstrasse <jstrasse@student.42lausanne.ch>    +#+  +:+       +#+      */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/26 11:12:48 by jstrasse          #+#    #+#             */
-/*   Updated: 2026/11/26 11:13:56 by jstrasse         ###   ########.ch       */
+/*   Created: 2026/11/27 22:09:53 by jstrasse          #+#    #+#             */
+/*   Updated: 2026/11/27 22:09:53 by jstrasse         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ int	init_mlx(t_game *game)
 			WIN_HEIGHT, "cub3d");
 	if (!game->mlx.window)
 		return (format_error("Failed to open window"));
-	return (init_frame(game));
+	if (!init_frame(game))
+		return (0);
+	return (init_textures(game));
 }
 
 int	init_frame(t_game *game)

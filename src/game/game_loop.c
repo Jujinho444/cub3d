@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jstrasse <jstrasse@student.42lausanne.ch>    +#+  +:+       +#+      */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/26 10:54:20 by jstrasse          #+#    #+#             */
-/*   Updated: 2026/11/26 10:54:29 by jstrasse         ###   ########.ch       */
+/*   Created: 2026/11/27 23:33:50 by jstrasse          #+#    #+#             */
+/*   Updated: 2026/11/27 23:33:50 by jstrasse         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,9 @@ int	game_loop(t_game *game)
 	game->last_frame = current_time;
 	if (delta_time > MAX_DELTATIME)
 		delta_time = MAX_DELTATIME;
+	if (delta_time < 0)
+		delta_time = 0;
 	update_player(game, delta_time);
-	draw_background(game);
-	draw_minimap(game);
-	mlx_put_image_to_window(game->mlx.mlx_ptr, game->mlx.window,
-		game->mlx.frame_buffer.img_ptr, 0, 0);
+	render_frame(game);
 	return (0);
 }

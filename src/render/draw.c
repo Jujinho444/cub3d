@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jstrasse <jstrasse@student.42lausanne.ch>    +#+  +:+       +#+      */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/26 23:00:05 by jstrasse          #+#    #+#             */
-/*   Updated: 2026/11/26 23:00:05 by jstrasse         ###   ########.ch       */
+/*   Created: 2026/11/27 23:34:02 by jstrasse          #+#    #+#             */
+/*   Updated: 2026/11/27 23:34:02 by jstrasse         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	put_pixel(t_img *img, int x, int y, int color)
 		+ x * (img->bits_per_pixel / 8);
 	*(unsigned int *)pixel_address = color;
 }
-
+/*
 void	draw_background(t_game *game)
 {
 	int		x;
@@ -47,6 +47,7 @@ void	draw_background(t_game *game)
 		y++;
 	}
 }
+*/
 
 void	draw_square(t_img *img, t_point pixel, int size, int color)
 {
@@ -81,5 +82,30 @@ void	draw_ray(t_game *game, t_vector direction, t_vector position)
 		py = position.y * TILE + direction.y * i;
 		put_pixel(img, (int)px, (int)py, MINIMAP_DIRECTION);
 		i++;
+	}
+}
+
+void	draw_column(t_game *game, t_column *col, int x)
+{
+	int	y;
+	int	color;
+
+	y = 0;
+	while (y < col->draw_start)
+	{
+		put_pixel(&game->mlx.frame_buffer, x, y, game->scene.ceiling_color);
+		y++;
+	}
+	while (y <= col->draw_end)
+	{
+		color = get_texel(col->texture, col->tex_x, (int)col->tex_position);
+		col->tex_position += col->tex_step;
+		put_pixel(&game->mlx.frame_buffer, x, y, color);
+		y++;
+	}
+	while (y < game->mlx.frame_buffer.height)
+	{
+		put_pixel(&game->mlx.frame_buffer, x, y, game->scene.floor_color);
+		y++;
 	}
 }
