@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aganz <aganz@student.42lausanne.ch>        +#+  +:+       +#+        */
+/*   By: jstrasse <jstrasse@student.42lausanne.ch>    +#+  +:+       +#+      */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/15 16:47:45 by aganz             #+#    #+#             */
-/*   Updated: 2026/11/15 16:53:12 by aganz            ###   ########.fr       */
+/*   Created: 05/11/2026 08:42:49 by jstrasse          #+#    #+#             */
+/*   Updated: 26/11/2026 11:17:50 by jstrasse         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	chartab_length(char **tab)
 {
-	int	i;
+	int		i;
 
 	if (!tab)
 		return (0);

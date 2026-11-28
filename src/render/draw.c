@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aganz <aganz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/17 22:54:04 by aganz             #+#    #+#             */
-/*   Updated: 2026/11/18 16:40:35 by aganz            ###   ########.fr       */
+/*   Created: 2026/11/26 23:00:05 by jstrasse          #+#    #+#             */
+/*   Updated: 2026/11/28 14:12:36 by aganz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	put_pixel(t_img *img, int x, int y, int color)
 	if (y < 0 || y >= img->height)
 		return ;
 	pixel_address = img->data_address + y * img->line_length
-						+ x * (img->bits_per_pixel / 8);
+		+ x * (img->bits_per_pixel / 8);
 	*(unsigned int *)pixel_address = color;
 }
 
@@ -45,5 +45,41 @@ void	draw_background(t_game *game)
 			x++;
 		}
 		y++;
+	}
+}
+
+void	draw_square(t_img *img, t_point pixel, int size, int color)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < size)
+	{
+		x = 0;
+		while (x < size)
+		{
+			put_pixel(img, pixel.x + x, pixel.y + y, color);
+			x++;
+		}
+		y++;
+	}
+}
+
+void	draw_ray(t_game *game, t_vector direction, t_vector position)
+{
+	double	px;
+	double	py;
+	int		i;
+	t_img	*img;
+
+	img = &game->mlx.frame_buffer;
+	i = 0;
+	while (i < TILE)
+	{
+		px = position.x * TILE + direction.x * i;
+		py = position.y * TILE + direction.y * i;
+		put_pixel(img, (int)px, (int)py, MINIMAP_DIRECTION);
+		i++;
 	}
 }

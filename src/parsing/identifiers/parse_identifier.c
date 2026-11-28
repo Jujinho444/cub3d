@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aganz <aganz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/15 18:30:04 by aganz             #+#    #+#             */
-/*   Updated: 2026/11/15 19:07:09 by aganz            ###   ########.fr       */
+/*   Created: 2026/11/26 11:14:41 by jstrasse          #+#    #+#             */
+/*   Updated: 2026/11/28 14:08:03 by aganz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	parse_identifiers(char **filecontent, t_scene *scene)
 		{
 			if (all_found(scene))
 			{
-				if (get_identifier(filecontent[i]) != -1) //check added
+				if (get_identifier(filecontent[i]) != -1)
 					return (format_error("identifier is duplicated"));
 				return (i);
 			}

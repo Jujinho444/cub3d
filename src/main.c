@@ -5,12 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aganz <aganz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/15 15:30:11 by aganz             #+#    #+#             */
-/*   Updated: 2026/11/28 13:58:30 by aganz            ###   ########.fr       */
+/*   Created: 2026/11/26 11:18:28 by jstrasse          #+#    #+#             */
+/*   Updated: 2026/11/28 14:45:51 by aganz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static void	setup_hooks(t_game *game)
+{
+	mlx_hook(game->mlx.window, DestroyNotify, StructureNotifyMask,
+		close_game, game);
+	mlx_hook(game->mlx.window, KeyPress, KeyPressMask,
+		handle_keypress, game);
+	mlx_hook(game->mlx.window, KeyRelease, KeyReleaseMask,
+		handle_keyrelease, game);
+}
 
 int	main(int argc, char **argv)
 {
@@ -27,16 +37,15 @@ int	main(int argc, char **argv)
 		cleanup_game(&game);
 		return (1);
 	}
+	init_player(&game);
 	if (!init_mlx(&game))
 	{
 		cleanup_game(&game);
 		return (1);
 	}
-	draw_background(&game);
-	mlx_put_image_to_window(game.mlx.mlx_ptr, game.mlx.window,
-			game.mlx.frame_buffer.img_ptr, 0, 0);
-	mlx_hook(game.mlx.window, DestroyNotify, StructureNotifyMask, close_game, &game);
-	mlx_hook(game.mlx.window, 2, 1L << 0, handle_keypress, &game);
+	setup_hooks(&game);
+	game.last_frame = get_time_seconds();
+	mlx_loop_hook(game.mlx.mlx_ptr, game_loop, &game);
 	mlx_loop(game.mlx.mlx_ptr);
 	cleanup_game(&game);
 	return (0);

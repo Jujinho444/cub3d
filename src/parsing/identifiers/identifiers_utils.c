@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aganz <aganz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/15 19:06:03 by aganz             #+#    #+#             */
-/*   Updated: 2026/11/15 19:14:08 by aganz            ###   ########.fr       */
+/*   Created: 2026/11/26 11:14:50 by jstrasse          #+#    #+#             */
+/*   Updated: 2026/11/28 14:04:19 by aganz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 int	get_identifier(char *line)
 {
 	static const char	*id[ID_COUNT] = {"NO", "SO", "WE", "EA", "F", "C"};
-	int					indice;
+	int					index;
 
-	indice = 0;
+	index = 0;
 	line = line + skip_spaces(line);
-	while (indice < ID_COUNT)
+	while (index < ID_COUNT)
 	{
-		if (!ft_strncmp(line, id[indice], ft_strlen(id[indice]))
-			&& line[ft_strlen(id[indice])] == ' ')
-			return (indice);
-		indice++;
+		if (!ft_strncmp(line, id[index], ft_strlen(id[index]))
+			&& line[ft_strlen(id[index])] == ' ')
+			return (index);
+		index++;
 	}
 	return (-1);
 }

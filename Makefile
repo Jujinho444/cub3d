@@ -6,7 +6,7 @@
 #    By: aganz <aganz@student.42lausanne.ch>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/11/16 22:24:18 by aganz             #+#    #+#              #
-#    Updated: 2026/11/25 14:00:47 by aganz            ###   ########.fr        #
+#    Updated: 2026/11/28 14:32:41 by aganz            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,14 +16,17 @@ CC		=	cc
 
 CFLAGS	=	-Wall -Wextra -Werror -std=gnu17 -MMD -MP
 
-SRCS	=	src/main.c src/free.c src/init.c src/utils.c src/cleanup.c \
+SRCS	=	src/main.c \
+			src/init/init.c src/init/mlx_init.c src/init/texture_init.c \
 			src/parsing/parse_file.c src/parsing/path_validation.c \
 			src/parsing/map/map_utils.c src/parsing/map/map_validation.c \
 			src/parsing/map/parse_map.c src/parsing/identifiers/colors.c  \
 			src/parsing/identifiers/identifiers_utils.c \
 			src/parsing/identifiers/parse_identifier.c \
-			src/render/mlx_init.c src/render/draw.c src/render/texture_init.c\
-			src/game_exit.c src/events.c \
+			src/game/game_loop.c src/game/events.c src/game/player.c \
+			src/render/draw.c src/render/minimap.c \
+			src/exit/cleanup.c src/exit/free.c src/exit/game_exit.c \
+			src/utils/utils.c src/utils/vector.c src/utils/time.c
 
 OBJS_DIR	=	obj/
 
