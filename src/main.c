@@ -6,7 +6,7 @@
 /*   By: aganz <aganz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/15 15:30:11 by aganz             #+#    #+#             */
-/*   Updated: 2026/11/25 14:06:10 by aganz            ###   ########.fr       */
+/*   Updated: 2026/11/28 13:58:30 by aganz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,6 @@ int	main(int argc, char **argv)
 	draw_background(&game);
 	mlx_put_image_to_window(game.mlx.mlx_ptr, game.mlx.window,
 			game.mlx.frame_buffer.img_ptr, 0, 0);
-	/*mlx_put_image_to_window(game.mlx.mlx_ptr, game.mlx.window,
-	game.textures[NORTH].img_ptr, 0, 0);
-	mlx_put_image_to_window(game.mlx.mlx_ptr, game.mlx.window,
-	game.textures[SOUTH].img_ptr, 64, 0);
-	mlx_put_image_to_window(game.mlx.mlx_ptr, game.mlx.window,
-	game.textures[WEST].img_ptr, 128, 0);
-	mlx_put_image_to_window(game.mlx.mlx_ptr, game.mlx.window,
-	game.textures[EAST].img_ptr, 192, 0);*/
 	mlx_hook(game.mlx.window, DestroyNotify, StructureNotifyMask, close_game, &game);
 	mlx_hook(game.mlx.window, 2, 1L << 0, handle_keypress, &game);
 	mlx_loop(game.mlx.mlx_ptr);
